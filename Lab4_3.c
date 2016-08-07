@@ -1,3 +1,9 @@
+/******  Lab 4.3 from Ying Bai's  'Practical microcontroller engineering with ARM technology'
+********* works in Keil uVision5    
+********** lab completed   8.5.2016
+*********** by Etienne Stehelin                                                             */
+
+
 #include <stdint.h>
 #include <stdbool.h>
 #include "header.h"
@@ -13,14 +19,14 @@ int main (void)
   bool res;
 	
 	SysCtlClockSet       (SYSCTL_SYSDIV_10|SYSCTL_USE_PLL|SYSCTL_XTAL_16MHZ|SYSCTL_OSC_MAIN);
-	SYSCTL_RCGC2_R =      SYSCTL_RCGC2_GPIOB|SYSCTL_RCGC2_GPIOC|SYSCTL_RCGC2_GPIOD|SYSCTL_RCGC2_GPIOF;
-	GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3);
+	SYSCTL_RCGC2_R =      SYSCTL_RCGC2_GPIOB|SYSCTL_RCGC2_GPIOC|SYSCTL_RCGC2_GPIOD;
+        //GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3);
 	GPIOPinTypeGPIOOutput(GPIO_PORTB_BASE, GPIO_PIN_0); 
 	GPIOPinTypeGPIOOutput(GPIO_PORTC_BASE,  GPIO_PIN_4);
 	GPIOPinTypeGPIOInput (GPIO_PORTD_BASE,GPIO_PIN_3);
-	GPIO_PORTF_LOCK_R = 0x4C4F434B;   // 2) unlock GPIO Port F
+	//GPIO_PORTF_LOCK_R = 0x4C4F434B;   // 2) unlock GPIO Port F
 	
-	res = SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF|SYSCTL_PERIPH_GPIOB|SYSCTL_PERIPH_GPIOC|SYSCTL_PERIPH_GPIOD);
+	res = SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOB|SYSCTL_PERIPH_GPIOC|SYSCTL_PERIPH_GPIOD);
 
   if (res == true)
 		{
